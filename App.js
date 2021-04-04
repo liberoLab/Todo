@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, } from 'react-native';
 import Header from './components/Header'
+import TodoItem from './components/TodoItem'
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Header />
+      <TodoItem title="강의 한개 듣기" done={true} />
+      <TodoItem title="1일 1커밋 하기" done={false} />
     </SafeAreaView>
   );
 }
@@ -24,11 +27,14 @@ const styles = StyleSheet.create({
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Platform, StatusBar } from 'react-native';
 import Header from './components/Header'
+import TodoItem from './components/TodoItem'
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Header />
+      <TodoItem title="강의 한개 듣기" done={true}/>
+      <TodoItem title="1일 1커밋 하기" done={false}/>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
