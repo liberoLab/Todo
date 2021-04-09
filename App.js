@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Touchable, } from 'react-native';
 import Header from './components/Header'
 import TodoItem from './components/TodoItem'
+import TaskModal from './components/TaskModal'
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       <Header />
       <TodoItem title="강의 한개 듣기" done={true} />
       <TodoItem title="1일 1커밋 하기" done={false} />
+      <TaskModal isVisible={false} />
     </SafeAreaView>
   );
 }
