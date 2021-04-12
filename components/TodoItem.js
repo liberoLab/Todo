@@ -4,7 +4,6 @@ import {
     Text,
     TouchableOpacity,
     StyleSheet,
-    Touchable,
 } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 

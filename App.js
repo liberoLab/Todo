@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Touchable, } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, } from 'react-native';
 import Header from './components/Header'
 import TodoItem from './components/TodoItem'
 import TaskModal from './components/TaskModal'
