@@ -13,12 +13,17 @@ export default class App extends React.Component {
       title: '공부하기',
       done: false,
     }],
+    showModal: false,
   }
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Header />
+        <Header
+          show={() => {
+            this.setState({ showModal: true })
+          }}
+        />
         <FlatList
           data={this.state.todos}
           renderItem={({ item }) => {
@@ -34,7 +39,11 @@ export default class App extends React.Component {
           }}
         />
 
-        <TaskModal isVisible={false} />
+        <TaskModal isVisible={this.state.showModal}
+          hind={() => {
+            this.setState({ showModal: false })
+          }}
+        />
       </SafeAreaView>
     );
   }
