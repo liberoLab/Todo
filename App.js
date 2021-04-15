@@ -26,11 +26,16 @@ export default class App extends React.Component {
         />
         <FlatList
           data={this.state.todos}
-          renderItem={({ item }) => {
+          renderItem={({ item, index }) => {
             return (
               <TodoItem
                 title={item.title}
                 done={item.done}
+                remove={() => {
+                  this.setState({
+                    todos: this.state.todos.filter((_, i) => i !== index)
+                  })
+                }}
               />
             )
           }}
@@ -40,6 +45,15 @@ export default class App extends React.Component {
         />
 
         <TaskModal isVisible={this.state.showModal}
+          add={(title) => {
+            this.setState({
+              todos: this.state.todos.concat({
+                title: title,
+                done: false,
+              }),
+              showModal: false,
+            })
+          }}
           hind={() => {
             this.setState({ showModal: false })
           }}

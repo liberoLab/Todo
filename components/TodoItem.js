@@ -12,10 +12,11 @@ import DeleteButton from './DeleteButton'
 const TodoItem = ({
     title,
     done,
+    remove,
 }) => {
     return (
         <Swipeable
-            renderRightActions={() => <DeleteButton />}
+            renderRightActions={() => <DeleteButton onPress={remove} />}
         >
             <View style={styles.container}>
                 <View style={styles.todo}>
