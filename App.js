@@ -36,6 +36,11 @@ export default class App extends React.Component {
                     todos: this.state.todos.filter((_, i) => i !== index)
                   })
                 }}
+                toggle={() => {
+                  const newTodos = [...this.state.todos]
+                  newTodos[index].done = !newTodos[index].done
+                  this.setState({ todos: newTodos })
+                }}
               />
             )
           }}
