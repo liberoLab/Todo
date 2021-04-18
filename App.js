@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, FlatList, SafeAreaView, } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage' // 저장소를 불러오려면 얘도 입력 필요 (사용 하려면 npm install @react-native-async-storage/async-storage 설치 하기)
 import Header from './components/Header'
 import TodoItem from './components/TodoItem'
 import TaskModal from './components/TaskModal'
@@ -14,6 +15,16 @@ export default class App extends React.Component {
       done: false,
     }],
     showModal: false,
+  }
+// componentwillMount 대신 componentDidMount 로 사용
+  componentDidMount() {
+    AsyncStorage.getItem('@todo:state').then((state) => {
+      this.setState(JSON.parse(state))
+    })
+  }
+
+  save = () => {
+    AsyncStorage.setItem('@todo:state', JSON.stringify(this.state))
   }
 
   render() {
@@ -34,12 +45,12 @@ export default class App extends React.Component {
                 remove={() => {
                   this.setState({
                     todos: this.state.todos.filter((_, i) => i !== index)
-                  })
+                  }, this.save)
                 }}
                 toggle={() => {
                   const newTodos = [...this.state.todos]
                   newTodos[index].done = !newTodos[index].done
-                  this.setState({ todos: newTodos })
+                  this.setState({ todos: newTodos }, this.save)
                 }}
               />
             )
@@ -57,7 +68,7 @@ export default class App extends React.Component {
                 done: false,
               }),
               showModal: false,
-            })
+            }, this.save)
           }}
           hind={() => {
             this.setState({ showModal: false })
