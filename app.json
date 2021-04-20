@@ -20,6 +20,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "me.lbero_lab.todo",
       "icon": "./assets/android-icon.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/android-foreground.png",
