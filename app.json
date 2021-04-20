@@ -16,6 +16,7 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "me.lberoLab.todo",
       "icon": "./assets/ios-icon.png",
       "supportsTablet": true
     },
